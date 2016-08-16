@@ -1,7 +1,7 @@
-# functs - merging functions
+# stream-render - render templates asynchronous
 ## Introduction
-`functs` is a lightweight is a npm module for merging multiple functions into one.
-You can use this e.g. for callbacks, event-handlers,...
+With `stream-render` you can insert information into files before you send them to your user.
+The advantage of `stream-render` is that it processes your file line by line so it uses few memory and the processed lines can be send to the user immediately.
 ### Example - Demo
 ```
 const functs = require('functs');
