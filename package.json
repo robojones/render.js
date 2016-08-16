@@ -1,0 +1,34 @@
+{
+  "name": "stream-render",
+  "version": "1.0.0",
+  "description": "render your templates asynchronously",
+  "main": "render.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robojones/stream-render.git"
+  },
+  "keywords": [
+    "render",
+    "template",
+    "asynchronously",
+    "async",
+    "stream",
+    "templates"
+  ],
+  "author": "robojones",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/robojones/stream-render/issues"
+  },
+  "homepage": "https://github.com/robojones/stream-render#readme",
+  "engines": {
+    "node": ">=6.3.1"
+  },
+  "tonicExample": "var render = require('stream-render');",
+  "dependencies": {
+    "extend": "^3.0.0"
+  }
+}
