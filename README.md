@@ -19,7 +19,7 @@ Hurray
 @ }
 
 ```
-Note: You must add an empty line in the end of your file.
+Note: You must add an empty line at the end of your file.
 ## Example - The Result
 The file you get from your server after rendering it would look like that:
 ```
