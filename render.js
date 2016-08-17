@@ -44,16 +44,19 @@ function render(writable, filePath, data) {
         count: [0, 0, 0]
     }
 
-    console.log(filePath);
     const readable = fs.createReadStream(filePath);
     readable.on('data', function(chunk) {
         const lines = (last + chunk).split(newLine)
         last = lines.pop();
 
         lines.forEach((line) => {
-            // console.log('neue zeile')
-            if(includes(line, startToken, endToken)) { //line with code
-                // console.log('h + c:', line);
+            if(line.replace(whitespace, '').indexOf(lineToken) === 0) { //codeline
+                let c = line.split(lineToken);
+                c.shift();
+                c = c.join(lineToken);
+                code.push(c);
+                countBrackets(c);
+            } else if (includes(line, startToken, endToken)) { //line with code
                 var rest = line;
                 while(rest) {
                     let start = rest.indexOf(startToken);
@@ -77,15 +80,7 @@ function render(writable, filePath, data) {
                 }
 
                 code.push('write("' + escNewLine + '");');
-            } else if(line.replace(whitespace, '').indexOf(lineToken) === 0) { //codeline
-                // console.log('c:', line);
-                let c = line.split(lineToken);
-                c.shift();
-                c = c.join(lineToken);
-                code.push(c);
-                countBrackets(c);
             } else { //html line
-                // console.log('h:', line);
                 html.push(line);
                 code.push('_insert(' + (html.length - 1) + ');');
                 code.push('write("' + escNewLine + '");');
@@ -96,7 +91,6 @@ function render(writable, filePath, data) {
 
             function tryEx() {
                 if(closed()) {
-                    console.log('\nneuer Teil');
                     let c = code.join(' ');
                     try {
                         ex(c, context);
@@ -114,7 +108,12 @@ function render(writable, filePath, data) {
     });
 
     readable.on('end', function() {
-        //writable.end();
+        try{
+        	writable.end();
+        }catch(error){
+        	//the error is not important
+        	//because it occurs when using process.stdout as writable
+        }
     });
 
     function _insert(i) {
@@ -142,7 +141,6 @@ function render(writable, filePath, data) {
 }
 
 function ex(code, context) {
-    // console.log(code);
     const script = new vm.Script(code);
     return script.runInContext(context);
 }
