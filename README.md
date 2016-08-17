@@ -36,6 +36,7 @@ Hurray
 ## Example - Using stream-render with http-server
 ```
 const http = require('http');
+const render = require('stream-render');
 
 const server = http.createServer((req, res) => {
   
