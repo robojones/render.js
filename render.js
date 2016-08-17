@@ -80,7 +80,7 @@ function render(writable, filePath, data) {
                 }
 
                 code.push('write("' + escNewLine + '");');
-            } else { //html line
+            } else { //content line
                 html.push(line);
                 code.push('_insert(' + (html.length - 1) + ');');
                 code.push('write("' + escNewLine + '");');
