@@ -28,7 +28,7 @@ Hurray
 Hurray
 Hurray
 ```
-## Example - Using stream-render with http
+## Example - Using stream-render with http-server
 ```
 const http = require('http');
 
