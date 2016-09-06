@@ -107,15 +107,12 @@ function render(writable, filePath, data) {
         });
     });
 
-    readable.on('end', function() {
-        try{
-        	writable.end();
-        }catch(error){
-        	//the error is not important
-        	//because it occurs when using process.stdout as writable
-        }
+	return new Promise((resolve)=>{
+		readable.on('end', function() {
+		    resolve(writable);
+		});
     });
-
+	
     function _insert(i) {
         writable.write(html[i]);
     }
