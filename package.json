@@ -1,6 +1,6 @@
 {
   "name": "stream-render",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "render your templates asynchronously",
   "main": "render.js",
   "scripts": {

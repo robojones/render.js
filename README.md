@@ -11,7 +11,7 @@ There is no special file extension that you have to use. You can use `.html`, `.
 ## Example - Template
 This is a file called `<pathToYourProject>/views/example.txt`
 ```
-@// use ` and ` to seperate your js code from other contents.
+@// use ` and ´ to seperate your js code from other contents.
 Hello `username´,
 Welcome to our site! three times hurray!
 
