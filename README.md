@@ -46,7 +46,9 @@ const server = http.createServer((req, res) => {
   };
   
   // render our example template
-  render(res, 'example.txt', data);
+  render(res, 'example.txt', data).then((stream)=>{
+    stream.end();
+  });
 });
 
 server.listen(3000, function () {
@@ -66,10 +68,24 @@ app.get('/example', function (req, res) {
   };
   
   // render our example template
-  render(res, 'example.txt', data);
+  render(res, 'example.txt', data).then((stream)=>{
+    stream.end();
+  });
 });
 
 app.listen(3000, function () {
   console.log('App listening on port 3000!');
 });
 ```
+
+## Arguments
+When you are calling the `render()` method you have to provide the following arguments:
+
+1. A writable stream
+2. The filename of the template
+3. The data to render into the template
+
+## Returns
+The `.render` method returns a promise that will be resolved when the rendering has been completed.
+
+Note: The promise will never be rejected. 
